@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6,
   clear: both;
   color: #FFFFFF;
   font-family: "Rubik Doodle Triangles", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 h1,
@@ -1392,7 +1392,7 @@ label {
   transform: rotateZ(45deg);
 }
 .hero-figure-box-01::before {
-  background: linear-gradient(to left, #1e1b57 0%, rgba(30, 27, 87, 0) 60%);
+  background: linear-gradient(to left, #090812 0%, rgba(9, 8, 18, 0) 60%);
   transform: rotateZ(45deg) scale(1.5);
 }
 
@@ -1405,7 +1405,7 @@ label {
   transform: rotateZ(-45deg);
 }
 .hero-figure-box-02::before {
-  background: linear-gradient(to top, #1e1b57 0%, rgba(30, 27, 87, 0) 60%);
+  background: linear-gradient(to top, #090812 0%, rgba(9, 8, 18, 0) 60%);
   transform: rotateZ(-45deg) scale(1.5);
 }
 
@@ -1417,7 +1417,7 @@ label {
   background: linear-gradient(to left top, #00BFFB, rgba(0, 191, 251, 0));
 }
 .hero-figure-box-03::before {
-  background: linear-gradient(to left, #1e1b57 0%, rgba(30, 27, 87, 0) 60%);
+  background: linear-gradient(to left, #090812 0%, rgba(9, 8, 18, 0) 60%);
   transform: rotateZ(45deg) scale(1.5);
 }
 
@@ -1661,7 +1661,7 @@ label {
   right: 0;
   bottom: 0;
   left: 0;
-  box-shadow: 0 24px 48px rgba(30, 27, 87, 0.24);
+  box-shadow: 0 24px 48px rgba(9, 8, 18, 0.24);
   mix-blend-mode: multiply;
 }
 
@@ -1720,7 +1720,7 @@ label {
 
 .cta-inner {
   position: relative;
-  background: #1e1b57;
+  background: #090812;
   overflow: hidden;
 }
 .cta-inner::before {
@@ -1758,7 +1758,7 @@ label {
 # Site content
 --------------------------------------------------------------*/
 .is-boxed {
-  background: #1e1b57;
+  background: #090812;
 }
 
 .body-wrap {
@@ -1776,7 +1776,7 @@ label {
 .boxed-container {
   max-width: 1440px;
   margin: 0 auto;
-  box-shadow: 0 24px 48px rgba(30, 27, 87, 0.24);
+  box-shadow: 0 24px 48px rgba(9, 8, 18, 0.24);
   mix-blend-mode: multiply;
   mix-blend-mode: normal;
 }
