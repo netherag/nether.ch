@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for Nether AG." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="images/favicon.png" sizes="64x64">
+  <title>Privacy Policy | Nether AG</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Triangles&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 18px; line-height: 1.7; scroll-behavior: smooth; }
+
+    body {
+      font-family: "Rubik", sans-serif;
+      color: #c0c8d8;
+      background: #090812;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(5, 4, 14, 0.88), rgba(5, 4, 14, 0.88)),
+        url("images/background.png");
+      background-size: cover;
+      background-position: center center;
+      z-index: -1;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(9, 8, 18, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-logo {
+      font-family: "Rubik Doodle Triangles", sans-serif;
+      font-size: 22px;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8A94A7;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: rgba(2, 112, 215, 0.18);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #c0c8d8;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(9, 8, 18, 0.95);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 12px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 24px; border-radius: 0; }
+    }
+
+    /* ── Content ── */
+    .page {
+      min-height: 100vh;
+      padding: 120px 32px 80px;
+      background: linear-gradient(160deg, rgba(5, 4, 14, 0.48) 0%, rgba(9, 8, 22, 0.60) 100%);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-line {
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #0270D7, #0F8AFD);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .page-heading {
+      font-family: "Rubik", sans-serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300;
+      color: #ffffff;
+      margin-bottom: 40px;
+      letter-spacing: -0.5px;
+    }
+
+    .privacy-block h3 {
+      font-family: "Rubik", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 36px;
+      margin-bottom: 10px;
+    }
+
+    .privacy-block p {
+      font-size: 16px;
+      color: #6b7589;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .privacy-block a { color: #0270D7; text-decoration: none; }
+    .privacy-block a:hover { text-decoration: underline; }
+
+    .privacy-block ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+
+    .privacy-block ul li {
+      font-size: 16px;
+      color: #6b7589;
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .privacy-block ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #0270D7;
+    }
+
+    .privacy-block ul li b { color: #c0c8d8; }
+
+    .privacy-updated {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #3B404C;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: rgba(5, 5, 12, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .footer-copyright {
+      font-size: 13px;
+      color: #3B404C;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #8A94A7;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">nether</a>
+    <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <div class="container">
+      <span class="section-line"></span>
+      <h1 class="page-heading">Privacy Policy</h1>
+
+      <div class="privacy-block">
+        <h3>1. General Information</h3>
+        <p>Nether AG, based in Switzerland, operates the website nether.ch and develops video games. We take your privacy seriously. This policy explains how we handle data in accordance with the Swiss Federal Act on Data Protection (FADP).</p>
+
+        <h3>2. Data Controller</h3>
+        <p>The entity responsible for data processing is Nether AG, Bern, Switzerland.<br>
+        Email: <a href="mailto:support@nether.ch">support@nether.ch</a></p>
+
+        <h3>3. Data Collection and Processing</h3>
+        <ul>
+          <li><b>Games:</b> Our games do not collect, store, or transmit any personal information, gameplay statistics, or unique identifiers to our servers.</li>
+          <li><b>Website:</b> When you visit our website, our hosting provider automatically collects server log files (e.g. IP address, browser type, time of access). This is technically necessary to display the website and ensure security. We do not use this data to identify individual users.</li>
+          <li><b>Cookies:</b> We do not use tracking or advertising cookies on this website.</li>
+        </ul>
+
+        <h3>4. Third-Party Platforms</h3>
+        <p>Our games are distributed through third-party platforms such as Steam or Itch.io. These platforms collect their own data for transactions and installations. Please refer to their respective privacy policies for details.</p>
+
+        <h3>5. Your Rights</h3>
+        <p>Under Swiss law, you have the right to request information about any data we may have processed, as well as the right to correction or deletion. Since we do not store personal data, we will typically be able to confirm that no such data exists in our systems.</p>
+
+        <h3>6. Changes</h3>
+        <p>We may update this policy from time to time to reflect changes in our games or legal requirements.</p>
+
+        <p class="privacy-updated">Last updated: January 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="index.html" class="back-link">&larr; Back to nether.ch</a>
+    <p class="footer-copyright">&copy; 2026 Nether AG, all rights reserved.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
+</html>
