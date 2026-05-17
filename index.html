@@ -53,7 +53,7 @@
       position: fixed;
       inset: 0;
       background-image:
-        radial-gradient(ellipse at center, rgba(5, 4, 14, 0.38) 0%, rgba(5, 4, 14, 0.96) 100%),
+        radial-gradient(ellipse at center, rgba(5, 4, 14, 0.25) 0%, rgba(5, 4, 14, 0.78) 100%),
         url("images/background.png");
       background-size: cover;
       background-position: center center;
@@ -159,20 +159,41 @@
     }
 
     .container {
+      position: relative;
       width: 100%;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 52px 48px;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: -140px -280px;
+      background: radial-gradient(
+        ellipse 48% 52% at 50% 50%,
+        rgba(5, 4, 14, 0.88) 0%,
+        rgba(5, 4, 14, 0.68) 28%,
+        rgba(5, 4, 14, 0.32) 52%,
+        rgba(5, 4, 14, 0.08) 70%,
+        transparent 84%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+@media (max-width: 640px) {
+      .container { padding: 40px 28px; }
     }
 
     /* ── Home ──────────────────────────────────────────────── */
     #home {
       text-align: center;
       justify-content: center;
-      background: linear-gradient(180deg, rgba(5, 4, 14, 0.30) 0%, rgba(5, 4, 14, 0.50) 100%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
     }
 
-    .hero-title {
+.hero-title {
       font-family: "Rubik Doodle Triangles", sans-serif;
       font-weight: 300;
       font-size: 94px;
@@ -234,7 +255,7 @@
 
     /* ── About ─────────────────────────────────────────────── */
     #about {
-      background: linear-gradient(160deg, rgba(5, 4, 14, 0.58) 0%, rgba(9, 8, 22, 0.72) 100%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
     }
 
     .section-heading {
@@ -263,7 +284,7 @@
 
     /* ── Contact ───────────────────────────────────────────── */
     #contact {
-      background: linear-gradient(160deg, rgba(2, 6, 18, 0.46) 0%, rgba(5, 4, 14, 0.62) 100%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
     }
 
     .contact-email {
