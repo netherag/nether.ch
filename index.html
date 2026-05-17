@@ -100,14 +100,17 @@
       letter-spacing: 0.08em;
       color: #8A94A7;
       text-decoration: none;
-      border-radius: 4px;
-      transition: color 0.2s, background 0.2s;
+      background-image: linear-gradient(90deg, #0270D7, #0F8AFD);
+      background-repeat: no-repeat;
+      background-size: 0% 2px;
+      background-position: left bottom;
+      transition: color 0.2s, background-size 0.25s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
       color: #ffffff;
-      background: rgba(2, 112, 215, 0.18);
+      background-size: 100% 2px;
     }
 
     /* Hamburger – mobile only */
@@ -428,8 +431,7 @@
       <span class="section-line reveal"></span>
       <h2 class="section-heading reveal">About</h2>
       <div class="body-text">
-        <p class="reveal">Based in the heart of Switzerland, <b>Nether AG</b> was founded on the principle that code is more than logic — it is a medium for expression.</p>
-        <p class="reveal">We don't just build games; we create experiences where engineering meets imagination.</p>
+        <p class="reveal">We're a Swiss game studio, which means our code is precise, our design is opinionated, and we take an unreasonable amount of pride in our turn order algorithms.</p>
         <p class="reveal">Games are our <b>passion</b>, software is our <b>art</b>.</p>
       </div>
     </div>
