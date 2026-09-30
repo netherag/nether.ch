@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Game studio building Rune, a party-based RPG. Precise code, opinionated design." />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Nether AG | Game Studio" />
+  <meta property="og:site_name" content="Nether AG" />
+  <meta property="og:url" content="https://www.nether.ch/">
+  <meta property="og:description" content="Game studio building Rune, a party-based RPG. Precise code, opinionated design." />
+  <meta property="og:image" content="https://www.nether.ch/images/logo-full-white-on-black_medium-min.png" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGameOrganization",
+    "name": "Nether AG",
+    "url": "https://www.nether.ch",
+    "address": { "@type": "PostalAddress", "addressCountry": "CH" },
+    "description": "Independent Swiss game studio building Rune, a party-based RPG.",
+    "sameAs": [
+      "https://bsky.app/profile/nether.ag",
+      "https://www.linkedin.com/company/nether",
+      "https://www.youtube.com/@nether-ag"
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="images/favicon.png" sizes="64x64">
+  <link rel="canonical" href="https://www.nether.ch/">
+  <title>Nether AG | Game Studio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Triangles&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: "Rubik", sans-serif;
+      color: #c0c8d8;
+      background: #090812;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { cursor: pointer; }
+
+    /* ── Fixed background ──────────────────────────────────── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at center, rgba(5, 4, 14, 0.25) 0%, rgba(5, 4, 14, 0.78) 100%);
+      background-size: cover;
+      background-position: center center;
+      z-index: -1;
+    }
+
+    /* ── Nav ───────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(9, 8, 18, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-logo {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: #8A94A7; font-weight: 400; }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: #8A94A7;
+      text-decoration: none;
+      background-image: linear-gradient(90deg, #0270D7, #0F8AFD);
+      background-repeat: no-repeat;
+      background-size: 0% 2px;
+      background-position: left bottom;
+      transition: color 0.2s, background-size 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffffff;
+      background-size: 100% 2px;
+    }
+
+    /* Hamburger – mobile only */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #c0c8d8;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .nav-ready .nav-toggle { display: flex; }
+      .nav-links {
+        display: flex;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(9, 8, 18, 0.95);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 12px 0;
+      }
+      .nav-ready .nav-links:not(.open) { display: none; }
+      .nav-links a { padding: 12px 24px; border-radius: 0; }
+    }
+
+    /* ── Section base ──────────────────────────────────────── */
+    section {
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 52px 48px;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: -140px -280px;
+      background: radial-gradient(
+        ellipse 48% 52% at 50% 50%,
+        rgba(5, 4, 14, 0.88) 0%,
+        rgba(5, 4, 14, 0.68) 28%,
+        rgba(5, 4, 14, 0.32) 52%,
+        rgba(5, 4, 14, 0.08) 70%,
+        transparent 84%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+@media (max-width: 640px) {
+      .container { padding: 40px 28px; }
+    }
+
+    /* ── Home ──────────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      text-align: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
+    }
+
+.hero-title {
+      font-family: "Rubik Doodle Triangles", sans-serif;
+      font-weight: 300;
+      font-size: 94px;
+      line-height: 54px;
+      letter-spacing: 4px;
+      color: #FFFFFF;
+      margin-bottom: 32px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 300;
+      color: #8A94A7;
+      line-height: 1.6;
+    }
+
+    .hero-tagline b {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .grad {
+      background: linear-gradient(90deg, #0270D7, #0F8AFD);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      font-weight: 600;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #0270D7, #0F8AFD);
+      margin: 40px auto;
+      border-radius: 2px;
+    }
+
+    .scroll-hint {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(138, 148, 167, 0.5);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2.4s ease-in-out infinite;
+    }
+
+    .scroll-hint svg { opacity: 0.5; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ── Section divider line ──────────────────────────────── */
+    .section-line {
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #0270D7, #0F8AFD);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* ── About ─────────────────────────────────────────────── */
+    #about {
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
+    }
+
+    .section-heading {
+      font-family: "Rubik", sans-serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300;
+      color: #ffffff;
+      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    .body-text p {
+      color: #8A94A7;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .body-text p:last-child { margin-bottom: 0; }
+
+    .body-text b {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* ── Contact ───────────────────────────────────────────── */
+    #contact {
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 14px 28px;
+      background: rgba(2, 112, 215, 0.12);
+      border: 1px solid rgba(2, 112, 215, 0.35);
+      border-radius: 6px;
+      color: #0F8AFD;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .contact-email:hover {
+      background: rgba(2, 112, 215, 0.22);
+      border-color: rgba(2, 112, 215, 0.6);
+      color: #ffffff;
+    }
+
+    /* ── Jobs ──────────────────────────────────────────────── */
+    #jobs {
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5, 4, 14, 0.22) 0%, transparent 100%);
+    }
+
+    .job-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .job-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 24px 28px;
+      border: 1px solid rgba(2, 112, 215, 0.28);
+      border-radius: 10px;
+      background: rgba(2, 112, 215, 0.06);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .job-card:hover {
+      background: rgba(2, 112, 215, 0.14);
+      border-color: rgba(2, 112, 215, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .job-card-text { min-width: 0; }
+
+    .job-card-title {
+      display: block;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .job-card-desc {
+      display: block;
+      font-size: 15px;
+      font-weight: 300;
+      color: #8A94A7;
+      line-height: 1.6;
+      max-width: 46ch;
+    }
+
+    .job-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .job-tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0F8AFD;
+      padding: 5px 12px;
+      border: 1px solid rgba(2, 112, 215, 0.35);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .job-card-arrow {
+      color: #0F8AFD;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .job-card:hover .job-card-arrow { transform: translateX(4px); }
+
+    @media (max-width: 640px) {
+      .job-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    /* ── Privacy ───────────────────────────────────────────── */
+    #privacy {
+      background: linear-gradient(160deg, rgba(5, 4, 14, 0.7) 0%, rgba(9, 8, 22, 0.82) 100%);
+      align-items: flex-start;
+      padding-top: 140px;
+    }
+
+    .privacy-block h3 {
+      font-family: "Rubik", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 36px;
+      margin-bottom: 8px;
+    }
+
+    .privacy-block p,
+    .privacy-block li {
+      font-size: 15px;
+      color: #6b7589;
+      line-height: 1.8;
+    }
+
+    .privacy-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .privacy-block ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .privacy-block ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #0270D7;
+    }
+
+    .privacy-updated {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #3B404C;
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    footer {
+      background: rgba(5, 5, 12, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px 32px;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: background 0.2s;
+    }
+
+    .social-links a:hover {
+      background: rgba(2, 112, 215, 0.2);
+    }
+
+    .social-links svg { display: block; }
+
+    .footer-copyright {
+      font-size: 13px;
+      color: #3B404C;
+    }
+
+    /* ── Reveal animation ──────────────────────────────────── */
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.reveal-pending {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal.reveal-pending { opacity: 1; transform: none; }
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #0F8AFD;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <a href="#home" class="nav-logo">nether<span> ag</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#jobs">Jobs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Home ── -->
+  <section id="home">
+    <div class="container">
+      <h1 class="hero-title reveal">nether</h1>
+      <div class="hero-divider reveal"></div>
+      <p class="hero-tagline reveal">
+        Games are our <b class="grad">passion</b>,<br>software is our <b class="grad">art</b>.
+      </p>
+      <div class="scroll-hint reveal" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 3v10M3 9l5 5 5-5" stroke="#8A94A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        scroll
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="container">
+      <span class="section-line reveal"></span>
+      <h2 class="section-heading reveal">About</h2>
+      <div class="body-text">
+        <p class="reveal">Small studio, unreasonable dreams, questionable commit messages. We make games, occasionally overthink things, and call it a productive afternoon.</p>
+        <p class="reveal">Right now we're building Rune, a party-based RPG. That's about all we're ready to share. «Mir chöi's chuum erwarte üses Spiu mit dir z’teile.»</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Jobs ── -->
+  <section id="jobs">
+    <div class="container">
+      <span class="section-line reveal"></span>
+      <h2 class="section-heading reveal">Jobs</h2>
+      <div class="body-text">
+        <p class="reveal">Small team, growing carefully. Here’s who we’re currently looking for.</p>
+      </div>
+      <ul class="job-list">
+        <li class="reveal">
+          <a href="nether-3d-artist.html" class="job-card">
+            <span class="job-card-text">
+              <span class="job-card-title">3D Artist</span>
+              <span class="job-card-desc">Characters, environments &amp; animation for Rune, our party-based RPG.</span>
+            </span>
+            <span class="job-card-meta">
+              <span class="job-tag">Contract</span>
+              <span class="job-tag">Remote</span>
+              <svg class="job-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li class="reveal">
+          <a href="nether-composer-audio.html" class="job-card">
+            <span class="job-card-text">
+              <span class="job-card-title">Composer &amp; Sound Designer</span>
+              <span class="job-card-desc">Original score and sound design for Rune, our party-based RPG.</span>
+            </span>
+            <span class="job-card-meta">
+              <span class="job-tag">Contract</span>
+              <span class="job-tag">Remote</span>
+              <svg class="job-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-line reveal"></span>
+      <h2 class="section-heading reveal">Contact</h2>
+      <div class="body-text">
+        <p class="reveal">We're always open to meeting people who care about the craft. «Schrib üs, mir freue üs uf di!»</p>
+      </div>
+      <a href="mailto:hello@nether.ch" class="contact-email reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        hello@nether.ch
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <ul class="social-links">
+        <li>
+          <a href="https://bsky.app/profile/nether.ag" title="Bluesky" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3.268 64 68.414" width="20" height="20">
+              <path fill="#0270D7" d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805zm36.254 0C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/nether" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg height="20" width="20" viewBox="0 0 382 382" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#0270D7" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@nether-ag" title="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#0270D7"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#090812"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <a href="privacy.html" style="font-size:13px;color:#3B404C;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#8A94A7'" onmouseout="this.style.color='#3B404C'">Privacy Policy</a>
+      <p class="footer-copyright">&copy; 2026 Nether AG, all rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    function setMenuOpen(open) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    }
+    toggle.addEventListener('click', () => setMenuOpen(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuOpen(false)));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && links.classList.contains('open')) {
+        setMenuOpen(false);
+        toggle.focus();
+      }
+    });
+    toggle.closest('nav').classList.add('nav-ready');
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav-links a');
+
+    function setActive() {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+      });
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1].id;
+      }
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+
+    // Content is visible by default; enhance only when motion is welcome.
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const siblings = [...entry.target.parentElement.querySelectorAll('.reveal-pending')];
+              const delay = Math.max(0, siblings.indexOf(entry.target)) * 80;
+              setTimeout(() => {
+                entry.target.classList.remove('reveal-pending');
+                entry.target.classList.add('visible');
+              }, delay);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => {
+          observer.observe(el);
+          el.classList.add('reveal-pending');
+        });
+      } catch {
+        revealEls.forEach(el => el.classList.remove('reveal-pending'));
+      }
+    }
+  </script>
+</body>
+</html>
